@@ -5,12 +5,14 @@
     <!-- Required meta tags-->
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
+    <meta name="description" content="<%=description%>">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
     <title><%=title%></title>
+      
+
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -25,7 +27,9 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/slider.css" rel="stylesheet" media="all">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    
    
     
 </head>
@@ -34,8 +38,8 @@
     <div class="page-wrapper bg-ramen p-t-20 p-b-100 font-poppins">
         <div class="header-info wrapper wrapper--w300">
             <div class="ramen-logo">&nbsp;</div>
-            <h2 class="title">BananaRamen</h2>
-            <p2>Vote for your campus to receive an absolute boat load of Ramen.</p2>
+            <h2 class="title"><%=title%></h2>
+            <p2><%=description%></p2>
         </div>
         <div class="wrapper wrapper--w500">
             <div class="card card-3">
@@ -62,7 +66,7 @@
                         
                         
                         <div class="p-t-10">
-                            <button class="ramen-me btn btn--pill btn--green" type="">RAMEN ME&nbsp;<span class="counter" style="display:none;">+&nbsp;<span class="counter-number">0</span></span></button>
+                            <button class="ramen-me btn btn--pill btn--green" type="">RAMEN ME&nbsp;<span class="ramen-add counter" style="display:none;">+&nbsp;<span class="counter-number">0</span></span></button>
                         </div>
                     
                     							
@@ -77,6 +81,33 @@
                     
                 </div>
             </div>
+            
+            <div class="fact-box">
+                <div id="carousel">
+                    <div class="btn-bar" style="display:none;">
+    <div id="buttons"><a id="prev" href="#"><</a><a id="next" href="#">></a> </div></div>
+  
+    <div id="slides">
+        <ul>
+            <% for (var i=0;i<facts.length;i++){%>
+            <li class="slide">
+                <div class="quoteContainer">
+                    <p2 style="display:inline;">Did you know? <b><%=facts[i].Title%></b></p2>
+                    <br>    
+                    <p2 style="display:inline;"><%=facts[i].Info%></p2>
+                </div>
+                
+            </li>
+                                <%}%>  
+
+                      
+        </ul>
+    </div>
+            
+            </div>
+            
+            
+            
         </div>
     </div>
 
@@ -106,6 +137,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
 
 
+
 var dataLabels = [];
 var dataValues = [];
 var dataIndexes = [];
@@ -119,6 +151,11 @@ var dataIndexes = [];
     dataValues.push(<%=chart[i].Value%>);
     dataIndexes.push(<%=chart[i].Index%>);
 <%}%> 
+
+
+Chart.defaults.global.defaultFontStyle = 'normal';
+Chart.defaults.global.defaultFontFamily = 'Poppins';
+Chart.defaults.scale.gridLines.display = false;
 
 
 
@@ -149,14 +186,13 @@ var myChart = new Chart(ctx, {
         animation: {
             duration: 500,
             onComplete: function() {
-                    
                 
                 var chartInstance = this.chart;
-                ctx.font = Chart.helpers.fontString(12, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                ctx.font = Chart.helpers.fontString(14, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
 
                 this.data.datasets.forEach(function(dataset, i ) {
                 var meta = chartInstance.controller.getDatasetMeta(i );
-                    console.log(meta);
+                    //console.log(meta);
                 meta.data.forEach(function(bar, index) {
 
                 var label = bar._model.label;
@@ -179,8 +215,10 @@ var myChart = new Chart(ctx, {
             xAxes: [{
                 
                 ticks: {
-                    display:false,
-                    beginAtZero: true
+                    display:true,
+                    beginAtZero: true,
+                    
+                    
                 },
                 gridlines: {
                     display:false,
@@ -191,7 +229,8 @@ var myChart = new Chart(ctx, {
             }],
             yAxes: [{
                 ticks: {
-                    display:false
+                    display:false,                    
+
                 },
                 gridlines: {
                     display:false,
@@ -244,7 +283,11 @@ $(".ramen-me").click(function(){
 })
 
 
+
+
+
         </script>
+        <script src="/js/slider.js"></script>
     </footer>
     
 </html>

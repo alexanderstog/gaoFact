@@ -148,6 +148,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 h1 {
@@ -181,6 +182,7 @@ p2 {
     font-size: 14px;
     text-align: center;
     padding-bottom: 10px;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }
 
 
@@ -199,6 +201,15 @@ p2 {
     border-radius: 5px;
     /* background-color: #f2f2f2; */
     font-weight: bold;
+}
+
+.ramen-add {
+
+}
+
+.fact-box {
+    margin-top: 10px;
+    
 }
 
 
@@ -286,7 +297,7 @@ width: 100%;
 }
 
 .btn--green:hover {
-  background: #4dae3c;
+  background: #08b811;
 }
 
 /* ==========================================================================
