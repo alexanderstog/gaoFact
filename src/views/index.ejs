@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title><%=title%></title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+   
+    
+</head>
+
+<body>
+    <div class="page-wrapper bg-ramen p-t-20 p-b-100 font-poppins">
+        <div class="header-info wrapper wrapper--w300">
+            <div class="ramen-logo">&nbsp;</div>
+            <h2 class="title">BananaRamen</h2>
+            <p2>Vote for your campus to receive an absolute boat load of Ramen.</p2>
+        </div>
+        <div class="wrapper wrapper--w500">
+            <div class="card card-3">
+                
+                <div class="card-body">
+                    
+                    <canvas id="myChart" style="width:100%; margin-bottomr:30px;"></canvas>
+                    
+                    
+                        
+                            
+                    <div class="text-container">
+                            <p2 style="display:inline-block;">I'm voting for&nbsp;</p2>
+                    <select class="institution-select">
+                    <% for (var i=0;i<chart.length;i++){%>
+                      <option id="<%=chart[i].Id%>" number="<%=i%>" selected><%=chart[i].Label%></option>
+                      
+                    <%}%>  
+                    </select> 
+                    
+                        
+                    </div> 
+
+                        
+                        
+                        <div class="p-t-10">
+                            <button class="ramen-me btn btn--pill btn--green" type="">RAMEN ME&nbsp;<span class="counter" style="display:none;">+&nbsp;<span class="counter-number">0</span></span></button>
+                        </div>
+                    
+                    							
+						
+                    
+                    <div class="terms">
+                        <p3>Terms & Conditions</p3>
+                    </div>
+                    
+                     
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+    <footer>
+    
+        <script>
+
+        
+
+var ctx = document.getElementById('myChart').getContext('2d');
+
+/* this is the beg ---------------- this is the beg */
+/* this is the beg ---------------- this is the beg */
+
+
+
+
+var dataLabels = [];
+var dataValues = [];
+var dataIndexes = [];
+
+<% for (var i=0; i<chart.length; i++){%>
+
+
+    var str = '<%=chart[i].Label%>';
+    dataLabels.push(str.replace(/&#(\d+);/g, function (m, n) { return String.fromCharCode(n); }));
+                    
+    dataValues.push(<%=chart[i].Value%>);
+    dataIndexes.push(<%=chart[i].Index%>);
+<%}%> 
+
+
+
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: dataLabels,
+        datasets: [{
+            label: '# of Votes',
+
+
+
+            data: dataValues,
+            backgroundColor: [
+                '#ffc91c',
+                '#ffc91c',
+                '#ffc91c',
+                '#ffc91c',
+                '#ffc91c'
+            ],
+            
+            borderWidth: 0,
+            barThickness:20
+        }]
+    },
+    options: {
+        events: [],
+        animation: {
+            duration: 500,
+            onComplete: function() {
+                    
+                
+                var chartInstance = this.chart;
+                ctx.font = Chart.helpers.fontString(12, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+
+                this.data.datasets.forEach(function(dataset, i ) {
+                var meta = chartInstance.controller.getDatasetMeta(i );
+                    console.log(meta);
+                meta.data.forEach(function(bar, index) {
+
+                var label = bar._model.label;
+                var xOffset = 20;
+                var yOffset = bar._model.y + 3;
+                ctx.fillText(label, xOffset, yOffset);
+                    $("#myChart").addClass("stopAnimate");
+                });
+            });
+            }
+        },
+        gridlines: {
+            display:false,
+            color:'#ffffff'
+        },
+        legend: {
+            display: false
+         },
+        scales: {
+            xAxes: [{
+                
+                ticks: {
+                    display:false,
+                    beginAtZero: true
+                },
+                gridlines: {
+                    display:false,
+                    color:'#ffffff',
+                    drawBorder: false //hide the chart edge line
+
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    display:false
+                },
+                gridlines: {
+                    display:false,
+                    color:'#ffffff',
+                    drawBorder: false //hide the chart edge line
+
+                }
+            }]
+            
+            
+            
+        }
+        
+    }
+});
+
+
+
+
+
+$(".ramen-me").click(function(){
+    var institutionNumber = $(".institution-select :selected").attr('number'); // The value of the selected option
+    var institutionId = $(".institution-select :selected").attr('id'); // The value of the selected option
+
+
+    $.post( "https://us-central1-bananaramen-c36db.cloudfunctions.net/ramenMe", { "id":institutionId } );
+    var number = parseInt($(".counter-number").text())+1;
+    $(".counter-number").text(number);
+    $(".counter").show();
+    
+    
+    
+        console.log("hello world");
+    var institutionNumber = $(".institution-select :selected").attr('number'); // The value of the selected option
+    var oldnumber = myChart.data.datasets[0].data[institutionNumber];
+    console.log("this is the old number" + oldnumber);
+    if (oldnumber > 0){
+        console.log("the number is one");
+        myChart.data.datasets[0].data[institutionNumber] = oldnumber + 1;
+
+    
+    } else {        
+        myChart.data.datasets[0].data[institutionNumber] = 1;
+    }
+    myChart.data.datasets[0].backgroundColor[institutionNumber] = "#e3132e";
+    myChart.update(0);
+
+
+    
+})
+
+
+        </script>
+    </footer>
+    
+</html>
+<!-- end document-->

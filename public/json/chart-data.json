@@ -1,0 +1,24 @@
+{
+  "chartData": [
+    {
+      "Label": "harvard",
+      "Value": 10
+    },
+    {
+      "Label": "MIT",
+      "Value": 5
+    },
+    {
+      "Label": "UCLA",
+      "Value": 25
+    },
+    {
+      "Label": "Pace",
+      "Value": 100
+    },
+    {
+      "Label": "Adam's University",
+      "Value": 44
+    }
+  ]
+}

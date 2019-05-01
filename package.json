@@ -1,0 +1,31 @@
+{
+  "name": "banana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chart.js": "^2.8.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "get-json": "^1.0.1",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.1",
+    "mssql": "^4.3.0",
+    "nodemailer": "^6.1.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jscs": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "jshint": "^2.9.6",
+    "jshint-stylish": "^2.2.1"
+  }
+}
