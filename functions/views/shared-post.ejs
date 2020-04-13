@@ -6,7 +6,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="<%=description%>">
-
+    <title><%=title%></title>
     <meta property="og:title" content="<%=title%>" />
     <meta property="og:url" content="https://google.com" />
     <meta property="og:image" content="" />
@@ -137,7 +137,7 @@
     // this shit sets the height of the body
     var headerHeight = $(".header-info").height();
     var windowHeight = $( window ).height();
-    $("#myCarousel").height(windowHeight - headerHeight - 50);
+    $("#myCarousel").height(windowHeight - headerHeight - 150);
     console.log("height of header" + headerHeight);
 
 

@@ -649,7 +649,7 @@ input {
 .scroll-buttons-container {
   width: 100%;
   position: fixed;
-  bottom:5px;
+  bottom:25px;
   height:60px;
 
 }
