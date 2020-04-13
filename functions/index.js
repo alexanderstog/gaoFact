@@ -203,7 +203,16 @@ app.get('/', async (req, res) => {
    //res.send(challenges);
 });
 
+app.get('/bulk', async (req, res) => {
+  res.render('bulk-form', {});
+});
 
+app.post('/bulk', async (req, res) => {
+  if(req.body.password !== 'RIP Emily Gao') {
+    res.send('incorrect password');
+  }
+  
+});
 
 
 
