@@ -12,9 +12,11 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "chart.js": "^2.8.0",
-    "ejs": "^2.6.1",
+    "ejs": "^2.7.4",
     "express": "^4.16.4",
+    "firebase-admin": "^8.10.0",
     "get-json": "^1.0.1",
+    "html2canvas": "^1.0.0-rc.5",
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.1",
     "mssql": "^4.3.0",

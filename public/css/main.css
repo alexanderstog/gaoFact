@@ -137,6 +137,7 @@ button {
    ========================================================================== */
 .page-wrapper {
   min-height: 100vh;
+  padding:2%;
 }
 
 body {
@@ -160,7 +161,8 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 36px;
+  font-weight:bold;
     text-align: center;
     color:#333333;
 }
@@ -180,7 +182,7 @@ h6 {
 p2 {
     display: block;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
     padding-bottom: 10px;
     font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }
@@ -189,8 +191,8 @@ p2 {
 /* ==========================================================================
    #BACKGROUND
    ========================================================================== */
-.bg-ramen {
-    background-color: #ffe388;
+.bg-scavenger {
+    background-color: #f2f2f2;
     
 }
 
@@ -203,9 +205,7 @@ p2 {
     font-weight: bold;
 }
 
-.ramen-add {
 
-}
 
 .fact-box {
     margin-top: 10px;
@@ -245,6 +245,7 @@ p2 {
    ========================================================================== */
 .wrapper {
   margin: 0 auto;
+  overflow:hidden;
 }
 
 .wrapper--w960 {
@@ -280,6 +281,11 @@ p2 {
 width: 100%;
 }
 
+.answer {
+  text-align: center;
+  font-size: 20px;
+}
+
 .btn--radius {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -292,8 +298,12 @@ width: 100%;
   border-radius: 5px;
 }
 
-.btn--green {
-  background: #08b811;
+.btn--blue {
+  background: #49c5fc;
+}
+
+.btn--grey {
+  background: #b1b1b1;
 }
 
 .btn--green:hover {
@@ -526,60 +536,163 @@ input {
    ========================================================================== */
 .title {
 
-    font-family: 'Permanent Marker', cursive;
-  font-size: 30px;
-  color: #e3132e;
+  font-family: 'Fredoka One', cursive;
+  color: #4c4748;
   font-weight: 400;
   margin-bottom: 10px;
-    text-align: center;
+  transform: rotate(-3deg);
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: colorpulse 4s infinite alternate;
+  animation: colorpulse 4s infinite alternate;  
+  padding-left: 5px;
 }
 
-
-.ramen-logo {
-    width: 100%;
-    height: 100px;
-    background-image: url(/img/logo.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+.header-info {
+  height:auto;
 }
+
 
 /* ==========================================================================
    #CARD
    ========================================================================== */
+  .carousel-inner {
+    height:100%;
+  }
+
+#myCarousel {
+
+  height:100%;
+}
+
 .card {
-  overflow: hidden;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  background: #fff;
-    min-height: 400px;
+  min-height: 400px;
+  margin-bottom:30px;
+}
+
+.item {
+
 }
 
 .card-3 {
-  background: #fff;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  
   width: 100%;
+  height:100%;
   display: table;
 }
 
-.card-3 .card-heading {
-  background: url("../images/bg-heading-03.jpg") top left/cover no-repeat;
-  display: table-cell;
-  width: 50%;
-    min-height: 500px;
+.card-3 .card-body {
+  padding: 0;
+  width:100%;
+  height:100%;
+  position: absolute;
 }
 
-.card-3 .card-body {
-  padding: 4%;
-  
-  display: table-cell;
+.fact-image {
+  width:100%;
+  height:auto;
+  border-radius: 10px 10px 0 0;
 }
+
+.fact-body {
+  padding:4%;
+  height: auto;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.fact-slugs {
+  position: absolute;
+  right:10px;
+  top:10px;
+  width: auto;
+}
+
+.fact-message {
+  display:inline-block !important;
+  height:40px;
+  min-width:40px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 40px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.fact-buttons {
+  width:100%;
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fact-share, .fact-read {
+  position:relative;
+  display:inline-block;
+  width:120px;
+  font-size:15px;
+  background-color: #27d6c5;
+  color:white;
+  margin: 9px;
+}
+
+.scroll-buttons-container {
+  width: 100%;
+  position: fixed;
+  bottom:5px;
+  height:60px;
+
+}
+
+.scroll-buttons {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  margin:0 auto;
+}
+.scroll-button {
+  width:50px;
+  height: 50px;
+  background-color:#ffffff;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  line-height: 50px; 
+  text-align: center;
+  font-size:20px;
+  border-radius: 100%;
+
+}
+
+.scroll-button-right {
+  float:right;
+}
+
+.scroll-button-left {
+  float:left;
+}
+
+
+.fact-status {
+  width:150px;
+  font-size:14px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  background-color: #f2f2f2;;
+  text-align:center;
+}
+
 
 @media (max-width: 767px) {
   .card-3 {
@@ -594,7 +707,30 @@ input {
   .card-3 .card-body {
     display: block;
     width: 100%;
-    padding: 37px 30px;
-    padding-bottom: 45px;
   }
+}
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+}
+@-webkit-keyframes colorpulse {
+0%   { color: #009e85; }
+25%  { color: #ea309c; }
+50%  { color: #f59c0d; }
+75%  { color: #2482b9; }
+}
+@keyframes colorpulse {
+0%   { color: #009e85; }
+25%  { color: #ea309c; }
+50%  { color: #f59c0d; }
+75%  { color: #2482b9; }
 }

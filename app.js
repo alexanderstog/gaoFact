@@ -1,10 +1,12 @@
 var express = require('express');
-var nodemailer = require('nodemailer');
 
 
 var app = express();
 
 var port = process.env.PORT || 3000;
+
+const admin = require('firebase-admin');
+
 
 
 var bodyParser = require('body-parser');
@@ -80,33 +82,26 @@ app.use('/contact', contactRouter);
 */
 
 
-var getJSON = require('get-json')
+var getJSON = require('get-json');
  
-
-
 
 
 
 
 app.get('/', function(req,res){
     
-    getJSON('https://us-central1-bananaramen-c36db.cloudfunctions.net/chartData',  function(error, response){
+    getJSON('https://us-central1-map-scavenger.cloudfunctions.net/challenges',  function(error, response){
  
     console.log(error);
     // undefined
  
     console.log(response);
-    var chart = response.chartData;
-    // ["Beth Orton &mdash; Stolen Car",
-    // "Jack White &mdash; Temporary Ground",
-    // "I Am Kloot &mdash; Loch",
-    // "Portishead &mdash; Glory Box"]
-        res.render('index', {
-       title:'Ramen-Drop', 
-       description:'Vote for your campus to receive a boat load of Ramen!',
+    var challenges = response;
+    res.render('index', {
+       title:'Maps Scavenger Hunt 🗺️', 
+       description:'The ultimate isolation distraction',
        nav: nav,
-       chart: chart,
-       facts:facts
+       challenges: challenges,
    }); 
 });
    

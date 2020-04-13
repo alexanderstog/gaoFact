@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<%=description%>">
+
+    <meta property="og:title" content="<%=title%>" />
+    <meta property="og:url" content="https://google.com" />
+    <meta property="og:image" content="" />
+
+    <meta name="author" content="gaoFact">
+    <meta name="keywords" content="Facts">
+
+    <!-- Title Page-->
+    <a href="/"><title><%=title%></title></a>
+      
+
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/slider.css" rel="stylesheet" media="all">
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/html2canvas.js"></script>
+    
+   
+    
+</head>
+
+<body>
+    <div class="page-wrapper bg-scavenger p-t-20">
+        <div class="header-info wrapper wrapper--w500">
+            <h2 class="title"><%=title%></h2>
+        </div>
+        <div  id="myCarousel" class="carousel slide carousel-fade wrapper wrapper--w500" data-ride="true" data-touch="true">
+            <div class="carousel-inner">
+
+                <% for(var i=0; i < facts.length; i++) { %>
+                <div id="slide-<%=i%>" class="card card-3 item <% if (i == 0) { %> active <% }%>">
+                    
+                    
+                    <div class="card-body">
+                        
+                        
+                        
+                        <div class="fact-body">
+                            <h3><%=facts[i].fact%></h3>
+
+                            <div class="fact-buttons">
+                                <div class="noselect share fact-message fact-share" shareText="<%=facts[i].fact%>" link="<%=facts[i].id%>">🔗 Share</div>
+                                <% if(facts[i].external){ %>
+                                <a href="<%=facts[i].external%>" target="_blank"><div class="noselect fact-message fact-read" link="">📖 Read</div></a>
+                                <% }%>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <% } %>
+            </div>
+            
+        </div>
+    </div> 
+    <div class="scroll-buttons-container">
+        <div class="scroll-buttons">
+            <a href="#myCarousel" data-slide="prev"><div class="scroll-button scroll-button-left"> 👈 </div></a>
+            <a href="#myCarousel" data-slide="next"><div class="scroll-button scroll-button-right"> 👉 </div></a>
+        </div>
+
+
+    </div> 
+      
+
+<!-- Jquery JS-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!-- Vendor JS-->
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/datepicker/moment.min.js"></script>
+    
+
+<!-- Main JS-->
+<script src="js/global.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC6mScLONe31yaonfeghL7DYrUEMGR6YbM",
+    authDomain: "map-scavenger.firebaseapp.com",
+    databaseURL: "https://map-scavenger.firebaseio.com",
+    projectId: "map-scavenger",
+    storageBucket: "map-scavenger.appspot.com",
+    messagingSenderId: "1001542943751",
+    appId: "1:1001542943751:web:1332e82822bbb81849d6a2",
+    measurementId: "G-H1MD2LH52C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+<footer>
+    <script>
+    // this shit sets the height of the body
+    var headerHeight = $(".header-info").height();
+    var windowHeight = $( window ).height();
+    $("#myCarousel").height(windowHeight - headerHeight - 50);
+    console.log("height of header" + headerHeight);
+
+
+    //check whether browser supports webshare api and make decision about what to do
+    if (navigator.share) {
+    console.log("sharing should work on this browser");
+    } else {
+    //$(".share").remove();  // provide a fallback here
+    console.log("sharing removed");
+    }
+
+    /*$(".title").click(function(){
+        html2canvas(document.querySelector("#myCarousel")).then(canvas => {
+        document.body.appendChild(canvas)
+        });
+        
+    });*/
+
+
+    
+
+        const resultPara = document.querySelector('title');
+
+        // Must be triggered some kind of "user activation"
+
+        document.querySelectorAll('.share').forEach(item => {
+            console.log("something happening");
+            //html2canvas(document.querySelector("#myCarousel")).then(canvas => {
+                item.addEventListener('click', async (e) => {
+                const text = e.target.getAttribute('shareText');
+                const url = "https://gaofact.web.app/" + e.target.getAttribute('link');
+                
+                
+                const shareData = {
+                    title: 'Lool',
+                    text: text,
+                    url: url
+                }
+
+                try {
+                    await navigator.share(shareData)
+                    resultPara.textContent = 'MSH shared successfully'
+                    analytics.logEvent('fact share')
+                } catch(err) {
+                    resultPara.textContent = 'Error: ';
+                }
+                });
+        });
+
+
+    $(".show-answer").click(function(){
+        var answer = $(this).attr('answer');
+        $("."+ answer+"").show();
+    });
+
+
+    </script>
+</footer>
+    
+</html>
+<!-- end document-->

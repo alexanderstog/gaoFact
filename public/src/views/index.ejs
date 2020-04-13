@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<%=description%>">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title><%=title%></title>
+      
+
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/slider.css" rel="stylesheet" media="all">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    
+   
+    
+</head>
+
+<body>
+    <div class="page-wrapper bg-scavenger p-t-20 p-b-100 font-poppins">
+        <div class="header-info wrapper wrapper--w500">
+            <div class="share btn--blue">Share with a friend</div>
+            <h2 class="title"><%=title%></h2>
+        </div>
+        <div class="wrapper wrapper--w500">
+            <div class="card card-3">
+                
+                <div class="card-body">
+                    <div class="challenge-slugs">
+                        
+                        <% if(challenges[0].status == true){ %>
+                            <div class="challenge-message challenge-status solved">Solved</div>
+                        
+                        <% } else { %>
+                            <div class="challenge-message challenge-status not-solved">Not yet solved</div>
+                        <% } %>
+                        <a target="_blank" href="<%=challenges[0].image%>"><div class="challenge-message challenge-zoom">🔎</div></a>
+                    </div>
+
+                    <img class="challenge-image" src="<%=challenges[0].image%>">
+                    
+                    <div class="challenge-body">
+                        <p><%=challenges[0].clue%></p>
+
+                            
+                            
+                            <div class="p-t-10">
+                                <a target="_blank" href="<%=challenges[0].link%>"><button class="ramen-me btn btn--pill btn--blue" type="">I know the answer&nbsp;<span class="ramen-add counter" style="display:none;">+&nbsp;<span class="counter-number">0</span></span></button></a>
+                            </div>
+                        
+                                                    
+                            
+                        
+                        <div class="terms">
+                            <br>
+                            <p3>brought to you by <a style="text-decoration: none !important;" href="htpp://www.myunidays.com"><b>UNiDAYS</b></a></p3>
+                        </div>
+                    </div>
+                    
+                     
+                        
+                    
+                </div>
+            </div>
+            
+            <div class="fact-box">
+                <div id="carousel">
+                    <div class="btn-bar" style="display:none;">
+    <div id="buttons"><a id="prev" href="#"><</a><a id="next" href="#">></a> </div></div>
+  
+
+            
+            </div>
+            
+            
+            
+        </div>
+    </div>
+
+<!-- Jquery JS-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/datepicker/moment.min.js"></script>
+    
+
+<!-- Main JS-->
+<script src="js/global.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC6mScLONe31yaonfeghL7DYrUEMGR6YbM",
+    authDomain: "map-scavenger.firebaseapp.com",
+    databaseURL: "https://map-scavenger.firebaseio.com",
+    projectId: "map-scavenger",
+    storageBucket: "map-scavenger.appspot.com",
+    messagingSenderId: "1001542943751",
+    appId: "1:1001542943751:web:1332e82822bbb81849d6a2",
+    measurementId: "G-H1MD2LH52C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+<footer>
+    <script>
+
+if (navigator.share) {
+alert("sharing should work on this browser");
+} else {
+    alert("sharing won't work");
+  // provide a fallback here
+}
+
+
+        const shareData = {
+            title: 'MDN',
+            text: 'Learn web development on MDN!',
+            url: 'https://developer.mozilla.org',
+            }
+
+            const btn = document.querySelector('.share');
+            const resultPara = document.querySelector('title');
+
+            // Must be triggered some kind of "user activation"
+            btn.addEventListener('click', async () => {
+            try {
+                await navigator.share(shareData)
+                resultPara.textContent = 'MDN shared successfully'
+            } catch(err) {
+                resultPara.textContent = 'Error: ';
+            }
+            });
+    </script>
+</footer>
+    
+</html>
+<!-- end document-->
