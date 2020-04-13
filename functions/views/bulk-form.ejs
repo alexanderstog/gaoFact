@@ -3,12 +3,14 @@
 <body>
 <div class="container">  
 
-    <form id="contact" action="/bulk" method="post">
-      <h3>funny facts only</h3>
-
-      <label for="myfile">Select a file:</label>
-        <input type="file" id="myfile" name="myfile"><br><br>
-        Password: <input type="text" name="password">
+    <form action="/bulk" method="post" enctype="multipart/form-data">  
+      <h3>Add more data you fiend</h3>
+      <label for="facts">facts:</label>
+        <textarea name="facts" id="" cols="30" rows="10"></textarea>
+      
+        
+        <br><br>
+ <input type="text" name="password">
         <input type="submit">
     </form>
   </div>

@@ -11,6 +11,7 @@ app.use(express.static('public'));
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
+
 admin.initializeApp(functions.config().firebase);
 
 
@@ -211,6 +212,14 @@ app.post('/bulk', async (req, res) => {
   if(req.body.password !== 'RIP Emily Gao') {
     res.send('incorrect password');
   }
+<<<<<<< HEAD
+=======
+
+  let results = req.body.facts;
+  console.log(results);
+
+  res.send("thanks");
+>>>>>>> Started adding csv from text area uploader
   
 });
 
