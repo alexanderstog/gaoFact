@@ -161,7 +161,7 @@ h2 {
 }
 
 h3 {
-  font-size: 36px;
+  font-size: 30px;
   font-weight:bold;
     text-align: center;
     color:#333333;
@@ -601,7 +601,7 @@ input {
 .fact-body {
   padding:4%;
   height: auto;
-  width: 70%;
+  width: 85%;
   position: absolute;
   top: 50%;
   left: 50%;

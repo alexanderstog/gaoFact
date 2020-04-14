@@ -30,11 +30,14 @@ app.get('/:id', async (req, res) => {
                 created: doc.data().created,
                 id: doc.id,
                 fact: doc.data().fact,
-                external: doc.data().external
+                external: doc.data().external,
+                random:Math.floor((Math.random()*1000000)+1)
             })
+          });
+            factList.sort(function(a, b){
+              return a.random - b.random;
             });
-
-        return factList; 
+            return factList; 
         })
         .catch(err => {
         console.log("ERROR ERROR LOOK AT ME:" + err);
@@ -49,7 +52,8 @@ app.get('/:id', async (req, res) => {
             created: doc.data().created,
                 id: doc.id,
                 fact: doc.data().fact,
-                external: doc.data().external
+                external: doc.data().external,
+                random:1
         });
         return sharedFact
         })
@@ -60,7 +64,7 @@ app.get('/:id', async (req, res) => {
 
       res.render('shared-post',{
         description : "risqué nonsense for everybody",
-        title: "risqué",
+        title: "braindump shared",
         facts: facts,
         sharedId: id,
         sharedFact: sharedFact,
@@ -78,8 +82,13 @@ app.get('/', async (req, res) => {
             created: doc.data().created,
             id: doc.id,
             fact: doc.data().fact,
-            external: doc.data().external
-          })
+            external: doc.data().external,
+            random:Math.floor((Math.random()*1000000)+1)
+          });
+          
+        });
+        factList.sort(function(a, b){
+          return a.random - b.random;
         });
 
         return factList; 
@@ -92,7 +101,7 @@ app.get('/', async (req, res) => {
 
     res.render('index',{
       description : "risqué nonsense for everybody",
-      title: "risqué",
+      title: "braindump",
       facts: facts
     });
     

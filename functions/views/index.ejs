@@ -9,14 +9,14 @@
     <meta name="description" content="<%=description%>">
 
     <meta property="og:title" content="<%=title%>" />
-    <meta property="og:url" content="https://google.com" />
+    <meta property="og:url" content="https://gaofact.web.app/" />
     <meta property="og:image" content="" />
 
     <meta name="author" content="gaoFact">
     <meta name="keywords" content="Facts">
 
     <!-- Title Page-->
-    <a href="/"><title><%=title%></title></a>
+    <title><%=title%></title>
       
 
 
@@ -38,7 +38,7 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
-    <link href="css/slider.css" rel="stylesheet" media="all">
+    
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -51,13 +51,13 @@
 <body>
     <div class="page-wrapper bg-scavenger p-t-20">
         <div class="header-info wrapper wrapper--w500">
-            <h2 class="title"><%=title%></h2>
+            <a href="/"><h2 class="title"><%=title%></h2></a>
         </div>
         <div  id="myCarousel" class="carousel slide carousel-fade wrapper wrapper--w500" data-ride="true" data-touch="true">
             <div class="carousel-inner">
 
                 <% for(var i=0; i < facts.length; i++) { %>
-                <div id="slide-<%=i%>" class="card card-3 item <% if (i == 0) { %> active <% }%>">
+                <div id="slide-<%=i%>" class="carousel-item card card-3 item <% if (i == 0) { %> active <% }%>">
                     
                     
                     <div class="card-body">
@@ -103,99 +103,43 @@
     
 
 <!-- Main JS-->
-<script src="js/global.js"></script>
+
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
 
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyC6mScLONe31yaonfeghL7DYrUEMGR6YbM",
-    authDomain: "map-scavenger.firebaseapp.com",
-    databaseURL: "https://map-scavenger.firebaseio.com",
-    projectId: "map-scavenger",
-    storageBucket: "map-scavenger.appspot.com",
-    messagingSenderId: "1001542943751",
-    appId: "1:1001542943751:web:1332e82822bbb81849d6a2",
-    measurementId: "G-H1MD2LH52C"
+    apiKey: "AIzaSyC0QU4M9fpMBmO9rRz-wmq33m90ZUB8FjE",
+    authDomain: "gaofact.firebaseapp.com",
+    databaseURL: "https://gaofact.firebaseio.com",
+    projectId: "gaofact",
+    storageBucket: "gaofact.appspot.com",
+    messagingSenderId: "154020631008",
+    appId: "1:154020631008:web:2f205270b643b81ddd1b85",
+    measurementId: "G-D4SKHM7V1T"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  let analytics = firebase.analytics();
+
+
+
 </script>
 
 
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 <footer>
-    <script>
-    // this shit sets the height of the body
-    var headerHeight = $(".header-info").height();
-    var windowHeight = $( window ).height();
-    $("#myCarousel").height(windowHeight - headerHeight - 150);
-    console.log("height of header" + headerHeight);
 
-
-    //check whether browser supports webshare api and make decision about what to do
-    if (navigator.share) {
-    console.log("sharing should work on this browser");
-    } else {
-    //$(".share").remove();  // provide a fallback here
-    console.log("sharing removed");
-    }
-
-    /*$(".title").click(function(){
-        html2canvas(document.querySelector("#myCarousel")).then(canvas => {
-        document.body.appendChild(canvas)
-        });
-        
-    });*/
-
-
-    
-
-        const resultPara = document.querySelector('title');
-
-        // Must be triggered some kind of "user activation"
-
-        document.querySelectorAll('.share').forEach(item => {
-            console.log("something happening");
-            //html2canvas(document.querySelector("#myCarousel")).then(canvas => {
-                item.addEventListener('click', async (e) => {
-                const text = e.target.getAttribute('shareText');
-                const url = "https://gaofact.web.app/" + e.target.getAttribute('link');
-                
-                
-                const shareData = {
-                    title: 'Lool',
-                    text: text,
-                    url: url
-                }
-
-                try {
-                    await navigator.share(shareData)
-                    resultPara.textContent = 'MSH shared successfully'
-                    analytics.logEvent('fact share')
-                } catch(err) {
-                    resultPara.textContent = 'Error: ';
-                }
-                });
-        });
-
-
-    $(".show-answer").click(function(){
-        var answer = $(this).attr('answer');
-        $("."+ answer+"").show();
-    });
-
-
-    </script>
+    <script src="js/sharing.js"></script>
+    <script src="js/global.js"></script>
 </footer>
     
 </html>
