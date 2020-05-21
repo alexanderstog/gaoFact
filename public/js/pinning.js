@@ -24,13 +24,27 @@ document.querySelectorAll('.pin').forEach(item => {
       const text = requiredTextArea.value;
       console.log("the share text = " + text);
       
-      let threadRef = db.collection('threads').doc(thread);
+      let threadRef = db.collection('threads');
+      
+      threadRef.doc(thread).get().then(doc => {
+        if(doc.exists) {
+          var data = doc.data();
+          var messages = [];
 
-        // Atomically add a new region to the "regions" array field.
-        let arrUnion = threadRef.update({
-        messages: admin.firestore.FieldValue.arrayUnion(text)
-        });
-         
-        
-      });
-  });
+          if(data.hasOwnProperty('messages')) {     
+            messages = data.messages;            
+          } 
+
+          messages.push(text);
+
+          threadRef.doc(thread).set({
+            messages
+          });
+        } else {
+          threadRef.doc(thread).set({
+            messages: [text]
+          });
+        }
+      });              
+    });
+});
