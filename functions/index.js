@@ -2,7 +2,6 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const express = require('express');
 const app = express();
-const FieldValue = require('firebase-admin').firestore.FieldValue;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -10,6 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set('views', 'views');
 app.set('view engine', 'ejs');
+
+
 
 
 admin.initializeApp(functions.config().firebase);
