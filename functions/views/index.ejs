@@ -157,10 +157,7 @@
         var errorCode = error.code;
         var errorMessage = error.message;
         
-        analytics.log('event', 'exception', {
-          'description': `Anon Auth Failure ${errorCode} ${errorMessage}`,
-          'fatal': false  
-        });
+        console.log(`Anon Auth Failure ${errorCode} ${errorMessage}`);
       });
 
       firebase.auth().onAuthStateChanged(user => {
