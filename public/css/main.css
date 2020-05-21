@@ -172,7 +172,10 @@ h4 {
 }
 
 h5 {
-  font-size: 15px;
+  font-size: 14px;
+  color: #a7a2a2;
+  text-align:left;
+  font-weight:bold;
 }
 
 h6 {
@@ -539,18 +542,52 @@ input {
   font-family: 'Fredoka One', cursive;
   color: #4c4748;
   font-weight: 400;
-  margin-bottom: 10px;
-  transform: rotate(-3deg);
+  margin-bottom: 0;
   font-size: 24px;
   width: 100%;
-  text-align: center;
+  text-align: left;
   -webkit-animation: colorpulse 4s infinite alternate;
   animation: colorpulse 4s infinite alternate;  
-  padding-left: 5px;
 }
 
 .header-info {
   height:auto;
+  position:relative;
+}
+
+.linkUnidays {
+  position:absolute;
+  right:0;
+  top:0;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  line-height: 42px;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/gaofact.appspot.com/o/unidaysicon.png?alt=media&token=f3f0b3b3-9976-4d15-a8ea-d2a9d26bdd70);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  margin-right: 0px;
+}
+
+.nav {
+  margin-top:20px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.nav-item {
+  padding: 5px 6px 5px 6px;
+  border-radius: 50px;
+  display: inline-block;
+  background-color: white;
+  color:#333333;
+}
+
+.nav-item-selected {
+  background-color: orange;
+  border:none;
 }
 
 
@@ -572,10 +609,6 @@ input {
   border-radius: 3px;
   min-height: 400px;
   margin-bottom:30px;
-}
-
-.item {
-
 }
 
 .card-3 {
@@ -617,10 +650,10 @@ input {
 }
 
 .fact-message {
-  display:inline-block !important;
+  display:inline-block;
   height:40px;
   min-width:40px;
-  border-radius: 40px;
+  border-radius: 6px;
   text-align: center;
   line-height: 40px;
   -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
@@ -634,17 +667,30 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .fact-share, .fact-read {
-  position:relative;
-  display:inline-block;
   width:120px;
+  height: 40px;
   font-size:15px;
   background-color: #27d6c5;
   color:white;
-  margin: 9px;
 }
+
+.share-text {
+  height: 100px;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    resize: none;
+    padding:10px;
+}
+
+
 
 .scroll-buttons-container {
   width: 100%;
@@ -721,7 +767,43 @@ input {
                                   supported by Chrome, Opera and Firefox */
 }
 
+.share {
+  display:inline-block;
+  bottom:0;
+  right:0;
 }
+
+.pin {
+  height: 40px;
+    background-color: #dddddd;
+    border-radius: 6px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    width: 47px;
+    display:inline-block;
+    cursor: pointer;
+}
+
+
+.share-container {
+  
+  width: 80%;
+  position:relative;
+  
+}
+
+.share-button-container {
+  position: absolute;
+  bottom:0;
+  right: 0;
+}
+
+.share-message {
+  height:120px;
+  text-align: left;
+}
+
 @-webkit-keyframes colorpulse {
 0%   { color: #009e85; }
 25%  { color: #ea309c; }
@@ -733,4 +815,17 @@ input {
 25%  { color: #ea309c; }
 50%  { color: #f59c0d; }
 75%  { color: #2482b9; }
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:#dddddd;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:#dddddd;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:#dddddd;
 }

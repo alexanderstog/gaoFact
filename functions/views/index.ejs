@@ -21,8 +21,8 @@
 
 
     <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
@@ -31,18 +31,18 @@
     
 
     <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="/css/main.css" rel="stylesheet" media="all">
     
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="js/html2canvas.js"></script>
+    <script src="/js/html2canvas.js"></script>
     
    
     
@@ -51,13 +51,27 @@
 <body>
     <div class="page-wrapper bg-scavenger p-t-20">
         <div class="header-info wrapper wrapper--w500">
-            <a href="/"><h2 class="title"><%=title%></h2></a>
+            <a href="/">
+                <h2 class="title"><%=title%></h2>
+                <h5 class="byUnidays">by UNiDAYS</h5>
+            </a>
+            <a href="https://www.myunidays.com/?utm_source=braindump&utm_medium=header&utm_campaign=braindump" class="appLink" onclick="trackAppClick()">
+                <div class="linkUnidays">&nbsp;</div>
+            </a>
+            <div class="nav">
+                <a href="/"><div class="nav-item">random</div></a>
+                <% for(var i=0; i < categories.length; i++) { %>
+                    <a href="/facts/<%=categories[i].category%>"><div class="category-<%=categories[i].category%> nav-item"><%=categories[i].category%></div></a>
+                <% } %>
+            </div>
         </div>
+        
+        
         <div  id="myCarousel" class="carousel slide carousel-fade wrapper wrapper--w500" data-ride="true" data-touch="true">
             <div class="carousel-inner">
 
                 <% for(var i=0; i < facts.length; i++) { %>
-                <div id="slide-<%=i%>" class="carousel-item card card-3 item <% if (i == 0) { %> active <% }%>">
+                <div id="slide-<%=i%>" class="carousel-item card card-3 item <% if (i == 0) { %> active <% }%>" categories="<%=facts[i].categories%>">
                     
                     
                     <div class="card-body">
@@ -68,7 +82,13 @@
                             <h3><%=facts[i].fact%></h3>
 
                             <div class="fact-buttons">
-                                <div class="noselect share fact-message fact-share" shareText="<%=facts[i].fact%>" link="<%=facts[i].id%>">🔗 Share</div>
+                                <div class="share-container">
+                                    <div class="share-item share-message"><textarea placeholder="you can add a comment here that will only appear to the person you share with. Nifty!" id="share-text" rows="4" cols="50" class="share-text" name="fname"></textarea></div>
+                                    <div class="share-button-container">
+                                    <div class="pin-item pin" index="<%=i%>" >Pin</div>
+                                    <div class="share-item noselect share fact-message fact-share" shareText="<%=facts[i].fact%>" factId="<%=facts[i].id%>" link="<%=facts[i].id%>">Pin & Share</div>
+                                    </div>
+                                </div>
                                 <% if(facts[i].external){ %>
                                 <a href="<%=facts[i].external%>" target="_blank"><div class="noselect fact-message fact-read" link="">📖 Read</div></a>
                                 <% }%>
@@ -111,6 +131,8 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
 
 <script>
   // Your web app's Firebase configuration
@@ -126,7 +148,9 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  let analytics = firebase.analytics();
+  const analytics = firebase.analytics();
+  const db = firebase.firestore();
+  var admin = require('firebase-admin');
 
 
 
@@ -138,8 +162,10 @@
 
 <footer>
 
-    <script src="js/sharing.js"></script>
-    <script src="js/global.js"></script>
+    <script src="/js/sharing.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/pinning.js"></script>
+    
 </footer>
     
 </html>

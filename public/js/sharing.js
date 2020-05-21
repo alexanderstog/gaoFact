@@ -1,8 +1,9 @@
 //check whether browser supports webshare api and make decision about what to do
 if (navigator.share) {
     console.log("sharing should work on this browser");
+    $(".share").show();  
     } else {
-    $(".share").remove();  // provide a fallback here
+    // provide a fallback here
     console.log("sharing removed");
     }
 
@@ -21,8 +22,9 @@ document.querySelectorAll('.share').forEach(item => {
         item.addEventListener('click', async (e) => {
 
         const text = e.target.getAttribute('shareText');
-        const url = "https://gaofact.web.app/" + e.target.getAttribute('link');
-        
+        const factId = e.target.getAttribute('factId');
+        const shortText = text.substring(0, 20);
+        const url = "https://gaofact.web.app/";
         
         const shareData = {
             title: 'Lool',
@@ -32,7 +34,22 @@ document.querySelectorAll('.share').forEach(item => {
 
         try {
             await navigator.share(shareData)
-            analytics.logEvent('share complete');
+            analytics.logEvent('share complete', {fact: shortText});
+            
+            
+            var sendInfo = {
+                "factId":factId
+            }
+            
+            //console.log(sendInfo);
+        
+            $.ajax({
+                url: 'https://us-central1-gaofact.cloudfunctions.net/recordShare',
+                type: 'post',
+                dataType: 'application/json',
+                data: sendInfo
+            });
+
         } catch(err) {
             analytics.logEvent('share failed');
         }
