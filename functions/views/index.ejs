@@ -133,7 +133,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -150,6 +150,24 @@
   firebase.initializeApp(firebaseConfig);
   const analytics = firebase.analytics();
   const db = firebase.firestore();
+  let userId = '';
+
+  firebase.auth().signInAnonymously().catch(error => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        
+        analytics.log('event', 'exception', {
+          'description': `Anon Auth Failure ${errorCode} ${errorMessage}`,
+          'fatal': false  
+        });
+      });
+
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          userId = user.uid;
+        } 
+      });
 
 </script>
 
