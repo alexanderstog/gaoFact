@@ -14,7 +14,7 @@
     "chart.js": "^2.8.0",
     "ejs": "^2.7.4",
     "express": "^4.16.4",
-    "firebase-admin": "^8.10.0",
+    "firebase-admin": "^11.4.1",
     "get-json": "^1.0.1",
     "html2canvas": "^1.0.0-rc.5",
     "mongodb": "^3.5.5",
